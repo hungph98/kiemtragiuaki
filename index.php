@@ -31,18 +31,15 @@ if (!$result) {
             <h1> Quản lí Danh bạ</h1>
             <div class="mt-5">
                 <form action="" method="GET">
-                    Search <input type="text" name="search">
-                    <input type="submit" name="ok" value="search">
+                    Tìm kiếm <input type="text" name="search">
+                    <input type="submit" name="ok" value="Tìm kiếm">
                 </form>
                 <?php
                 if (isset($_REQUEST['ok'])) {
                     $search = addslashes($_GET['search']);
                     if (empty($search)) {
-                        echo "Yeu cau nhap du lieu vao o trong";
+                        echo "Điền dữ liệu và ô trống";
                     } else {
-                        // $sql = "SELECT can_bo.ten, can_bo.chuc_vu, can_bo.sdt_co_quan, can_bo.sdt_di_dong,can_bo.email, phong_ban.ten_phong_ban,don_vi.ten as ten_don_vi
-                        //                 FROM can_bo, phong_ban, don_vi
-                        //                 WHERE can_bo.id_phong_ban = phong_ban.id_phong_ban AND don_vi.id_don_vi = phong_ban.id_don_vi like '%$search%'";
                         $sql1 = "SELECT can_bo.ten, can_bo.chuc_vu, can_bo.sdt_co_quan, can_bo.sdt_di_dong,can_bo.email, phong_ban.ten_phong_ban,don_vi.ten as ten_don_vi
                                     FROM can_bo, phong_ban, don_vi 
                                     WHERE can_bo.id_phong_ban = phong_ban.id_phong_ban AND don_vi.id_don_vi = phong_ban.id_don_vi AND can_bo.ten like '%$search%'";
@@ -77,7 +74,7 @@ if (!$result) {
                     <?php
                                 }
                             } else {
-                                echo "Khong tim thay ket qua!";
+                                echo "Không tìm thấy kết quả!";
                             }
                         }
                     }
